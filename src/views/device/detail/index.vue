@@ -22,7 +22,7 @@
 
       <template #toolbar>
         <!-- <a-button type="primary" @click="getFormValues">获取表单数据</a-button> -->
-        <a-button type="primary" @click="getFormValues">删除</a-button>
+        <a-button type="danger" @click="getFormValues">批量删除</a-button>
       </template>
 
       <template #action="{ record }">

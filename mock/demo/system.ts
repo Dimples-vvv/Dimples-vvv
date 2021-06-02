@@ -20,6 +20,7 @@ const accountList = (() => {
 
 const roleList = (() => {
   const result: any[] = [];
+
   for (let index = 0; index < 4; index++) {
     result.push({
       id: `${index}`,
@@ -29,6 +30,10 @@ const roleList = (() => {
       createTime: '@datetime',
       remark: '@cword(10,20)',
       'status|1': ['0', '1'],
+
+      name: '@cname',
+      email: '@email',
+      'phone|1': ['13258568310', '13558568310', '18958568310'],
     });
   }
   return result;

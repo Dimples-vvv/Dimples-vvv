@@ -16,7 +16,7 @@ export const step1Schemas: FormSchema[] = [
   {
     field: 'address',
     component: 'Input',
-    label: '地址',
+    label: '设备地址',
     required: true,
   },
 ];
@@ -37,7 +37,7 @@ export const step2Schemas: FormSchema[] = [
   {
     field: 'address',
     component: 'Input',
-    label: '地址',
+    label: '设备地址',
     required: false,
   },
 ];

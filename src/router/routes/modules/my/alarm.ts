@@ -29,10 +29,7 @@ const device: AppRouteModule = {
     {
       path: 'contacts',
       name: 'contacts',
-      component: ExceptionPage,
-      props: {
-        status: ExceptionEnum.PAGE_NOT_DATA,
-      },
+      component: () => import('/@/views/alarm/contacts/index.vue'),
       meta: {
         title: t('routes.my.alarmContacts'),
       },
