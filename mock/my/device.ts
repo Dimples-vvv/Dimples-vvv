@@ -9,7 +9,7 @@ const deviceList = (() => {
       beginTime: '@datetime',
       endTime: '@datetime',
       address: '@city()',
-      name: '@cname()',
+      name: '设备' + `${index}`,
       name1: '@string()',
       name2: '@cname()',
       name3: '@cname()',

@@ -2,8 +2,6 @@ import type { AppRouteModule } from '/@/router/types';
 
 import { LAYOUT } from '/@/router/constant';
 import { t } from '/@/hooks/web/useI18n';
-import { ExceptionEnum } from '/@/enums/exceptionEnum';
-const ExceptionPage = () => import('/@/views/sys/exception/Exception.vue');
 
 const device: AppRouteModule = {
   path: '/device',
@@ -26,10 +24,7 @@ const device: AppRouteModule = {
     {
       path: 'deviceAdd',
       name: 'deviceAdd',
-      component: ExceptionPage,
-      props: {
-        status: ExceptionEnum.PAGE_NOT_DATA,
-      },
+      component: () => import('/@/views/device/add/index.vue'),
       meta: {
         title: t('routes.my.deviceAdd'),
       },
