@@ -8,7 +8,7 @@ export function getBasicColumns(): BasicColumn[] {
     {
       title: '状态',
       dataIndex: 'status',
-      width: 200,
+      width: 100,
       customRender: ({ record }) => {
         const status = record.status;
         const enable = ~~status === 0;
@@ -33,20 +33,41 @@ export function getBasicColumns(): BasicColumn[] {
       dataIndex: 'address',
     },
 
-    {
-      title: '开始时间',
-      width: 120,
-      sorter: true,
-      dataIndex: 'beginTime',
-    },
-    {
-      title: '结束时间',
-      width: 120,
-      sorter: true,
-      dataIndex: 'endTime',
-    },
+    // {
+    //   title: '开始时间',
+    //   width: 120,
+    //   sorter: true,
+    //   dataIndex: 'beginTime',
+    // },
+    // {
+    //   title: '结束时间',
+    //   width: 120,
+    //   sorter: true,
+    //   dataIndex: 'endTime',
+    // },
   ];
 }
+
+export const searchDevice: FormSchema[] = [
+  {
+    field: 'name',
+    label: '设备名称',
+    component: 'Input',
+    colProps: { span: 8 },
+  },
+  {
+    field: 'status',
+    label: '状态',
+    component: 'Select',
+    componentProps: {
+      options: [
+        { label: '在线', value: '1' },
+        { label: '离线', value: '2' },
+      ],
+    },
+    colProps: { span: 8 },
+  },
+];
 
 export function getBasicShortColumns(): BasicColumn[] {
   return [

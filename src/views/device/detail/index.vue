@@ -18,10 +18,30 @@
     </div>
 
     <BasicTable @register="registerTable">
-      <template #form-custom> custom-slot </template>
+      <template #form-custom> </template>
 
       <template #toolbar>
-        <a-button type="primary" @click="getFormValues">获取表单数据</a-button>
+        <!-- <a-button type="primary" @click="getFormValues">获取表单数据</a-button> -->
+        <a-button type="primary" @click="getFormValues">删除</a-button>
+      </template>
+
+      <template #action="{ record }">
+        <TableAction
+          :actions="[
+            {
+              icon: 'clarity:note-edit-line',
+              onClick: handleEdit.bind(null, record),
+            },
+            {
+              icon: 'ant-design:delete-outlined',
+              color: 'error',
+              popConfirm: {
+                title: '是否确认删除',
+                confirm: handleDelete.bind(null, record),
+              },
+            },
+          ]"
+        />
       </template>
     </BasicTable>
   </div>
@@ -32,35 +52,53 @@
 
   import { List } from 'ant-design-vue';
 
-  import { BasicTable, useTable } from '/@/components/Table';
-  import { getBasicColumns, getFormConfig } from './tableData';
+  import { BasicTable, useTable, TableAction } from '/@/components/Table';
+  import { getBasicColumns, searchDevice } from './tableData';
 
-  import { demoListApi } from '/@/api/demo/table';
+  import { deviceListApi } from '/@/api/demo/table';
 
   export default defineComponent({
     components: {
       [List.name]: List,
       [List.Item.name]: List.Item,
-
       [Row.name]: Row,
       [Col.name]: Col,
+
       BasicTable,
+      TableAction,
     },
     setup() {
       const [registerTable, { getForm }] = useTable({
         title: '设备列表',
-        api: demoListApi,
+        api: deviceListApi,
         columns: getBasicColumns(),
         useSearchForm: true,
-        formConfig: getFormConfig(),
+        formConfig: {
+          labelWidth: 120,
+          schemas: searchDevice,
+        },
         showTableSetting: true,
         rowSelection: { type: 'checkbox' },
+        actionColumn: {
+          width: 80,
+          title: '操作',
+          dataIndex: 'action',
+          slots: { customRender: 'action' },
+          fixed: undefined,
+        },
       });
 
       function getFormValues() {
         console.log(getForm().getFieldsValue());
       }
 
+      function handleEdit(record: Recordable) {
+        console.log(record);
+      }
+
+      function handleDelete(record: Recordable) {
+        console.log(record);
+      }
       return {
         prefixCls: 'list-basic',
 
@@ -71,6 +109,9 @@
 
         registerTable,
         getFormValues,
+
+        handleEdit,
+        handleDelete,
       };
     },
   });
