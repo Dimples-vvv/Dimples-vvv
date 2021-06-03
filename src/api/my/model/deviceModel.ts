@@ -2,19 +2,24 @@ import { BasicPageParams, BasicFetchResult } from '/@/api/model/baseModel';
 /**
  * @description: Request list interface parameters
  */
-export type DemoParams = BasicPageParams;
+interface deviceListParams extends BasicPageParams {
+  userId: string;
+}
+export type DeviceListParams = deviceListParams;
 
-export interface DemoListItem {
+export interface DeviceListItem {
   id: string;
-  beginTime: string;
-  endTime: string;
-  address: string;
-  name: string;
-  no: number;
+  electricmotorAddress: string;
+  electricmotorName: string;
+  electricmotorMark: string;
   status: number;
+  company: string;
+  dep: string;
+  createUser: string;
+  createTime: string;
 }
 
 /**
  * @description: Request list return value
  */
-export type DemoListGetResultModel = BasicFetchResult<DemoListItem>;
+export type DeviceListGetResultModel = BasicFetchResult<DeviceListItem>;

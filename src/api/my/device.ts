@@ -1,26 +1,15 @@
 import { defHttp } from '/@/utils/http/axios';
-import { DemoParams, DemoListGetResultModel } from './model/deviceModel';
+import { DeviceListParams, DeviceListGetResultModel } from './model/deviceModel';
 
 enum Api {
-  DEMO_LIST = '/table/getDemoList',
   DEVICE_LIST = '/device/getDeviceList',
 }
 
 /**
- * @description: Get sample list value
+ * @description: Get device list value
  */
-
-export const demoListApi = (params: DemoParams) =>
-  defHttp.get<DemoListGetResultModel>({
-    url: Api.DEMO_LIST,
-    params,
-    headers: {
-      ignoreCancelToken: true,
-    },
-  });
-
-export const deviceListApi = (params: DemoParams) =>
-  defHttp.get<DemoListGetResultModel>({
+export const deviceListApi = (params: DeviceListParams) =>
+  defHttp.get<DeviceListGetResultModel>({
     url: Api.DEVICE_LIST,
     params,
     headers: {

@@ -19,7 +19,7 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '设备名称',
-      dataIndex: 'name',
+      dataIndex: 'electricmotorName',
       width: 150,
     },
     {
@@ -30,7 +30,11 @@ export function getBasicColumns(): BasicColumn[] {
     },
     {
       title: '设备地址',
-      dataIndex: 'address',
+      dataIndex: 'electricmotorAddress',
+    },
+    {
+      title: '所属公司',
+      dataIndex: 'company',
     },
 
     // {

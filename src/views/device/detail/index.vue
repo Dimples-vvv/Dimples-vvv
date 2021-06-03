@@ -55,7 +55,7 @@
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { getBasicColumns, searchDevice } from './tableData';
 
-  import { deviceListApi } from '/@/api/demo/table';
+  import { deviceListApi } from '/@/api/my/device';
 
   export default defineComponent({
     components: {
